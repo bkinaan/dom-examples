@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="greeting">Please enter your name</div>
+        <input id="name">
+        <script>
+            const input = document.querySelector("#name");
+            const greeting = document.querySelector("#greeting");
+            input.addEventListener("input", () => {
+                if (!input.value.trim()) {
+                    greeting.textContent = "Please enter your name";
+                } else {
+                    greeting.textContent = `Hi ${input.value}!`
+                }
+            })
+        </script>
+    </body>
+</html>
