@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <section>
+                <h1>What needs to be done?</h1>
+                <ul id="todos"></ul>
+            </section>
+            <section>
+                <h1>Completed todos</h1>
+                <ul id="completed"></ul>
+            </section>
+            <form id="todo-form">
+                <input type="text" id="input">
+                <button>Add</button>
+            </form>
+        </div>
+        <script>
+            const $ = x => document.querySelector(x);
+            const todoList = $("#todos");
+            const completedTasks = $("#completed");
+            const form = $("#todo-form");
+            const input = $("#input");
+
+            function todoChild(test, status) {
+                const li = document.createElement("li");
+                const span = document.createElement("span");
+                const button = document.createElement("button");
+                span.textContent=text;
+                li.appendChild(span);
+                li.appendChild(button);
+
+                if (status) {
+                    span.style.textDecoration = 'line-through'
+                    button.textContent = '🗑️';
+                    // TODO remove todo item
+                } else {
+                    button.textContent = '✅';
+                    // add todo
+                }
+                return li;
+            }
+
+            function createTodo(name) {
+                todoList.appendChild(createTodo(name, false));
+            }
+
+            function completeTodo() { }
+
+            form.addEventListener("submit", e => {
+                e.preventDefault(); // this prevents the webpage from reloading the page and sending the data to the server (since we are dealing the date ourselves)
+                createTodo(input.value);
+            })
+        </script>
+    </body>
+</html>
